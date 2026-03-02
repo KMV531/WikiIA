@@ -25,8 +25,6 @@ export function ThemeForm({
   const setTheme = useStore((state) => state.setTheme);
 
   const validateTheme = (theme: string) => {
-    // Regex : Autorise Lettres (A-Z, a-z), Accents (À-ÿ), Espaces (\s) et Tirets (-)
-    // Le ^ au début et le $ à la fin signifient "toute la chaîne doit correspondre"
     const regex = /^[a-zA-ZÀ-ÿ\s-]+$/;
 
     const trimmedTheme = theme.trim();
@@ -41,7 +39,6 @@ export function ThemeForm({
       return "Le thème ne doit contenir que des lettres (pas de chiffres ou symboles spéciaux).";
     }
 
-    // Optionnel : Empêcher uniquement des chiffres si la regex était plus souple
     if (/^\d+$/.test(trimmedTheme)) {
       return "Le thème ne peut pas être composé uniquement de chiffres.";
     }

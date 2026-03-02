@@ -20,8 +20,6 @@ export function NameForm({ className, ...props }: React.ComponentProps<"div">) {
   const setName = useStore((state) => state.setName);
 
   const validateName = (name: string) => {
-    // Regex : Autorise Lettres (A-Z, a-z), Accents (À-ÿ), Espaces (\s) et Tirets (-)
-    // Le ^ au début et le $ à la fin signifient "toute la chaîne doit correspondre"
     const regex = /^[a-zA-ZÀ-ÿ\s-]+$/;
 
     const trimmedName = name.trim();
@@ -36,7 +34,6 @@ export function NameForm({ className, ...props }: React.ComponentProps<"div">) {
       return "Le nom ne doit contenir que des lettres (pas de chiffres ou symboles spéciaux).";
     }
 
-    // Optionnel : Empêcher uniquement des chiffres si la regex était plus souple
     if (/^\d+$/.test(trimmedName)) {
       return "Le nom ne peut pas être composé uniquement de chiffres.";
     }

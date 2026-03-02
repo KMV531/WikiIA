@@ -8,7 +8,7 @@ export default function ThemePage() {
     <main className="relative min-h-svh w-full overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0 z-0">
         <Particles
-          particleColors={["#000000"]}
+          particleColors={["#ffffff"]}
           particleCount={400}
           particleSpread={10}
           speed={0.1}
@@ -20,7 +20,7 @@ export default function ThemePage() {
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-sm p-6 backdrop-blur-2xl bg-card rounded-lg">
+      <div className="relative z-10 w-full max-w-sm p-6 backdrop-blur-2xl rounded-lg">
         <ThemeForm />
       </div>
     </main>
