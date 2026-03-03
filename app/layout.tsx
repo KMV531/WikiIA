@@ -10,7 +10,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "WikiIA - Générateur de questions",
+  title: "WikipIA - Générateur de questions",
   description:
     "Une application pour générer des questions à partir de thèmes donnés, avec une touche d'humour et une erreur volontaire pour stimuler la réflexion.",
 };

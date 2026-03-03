@@ -1,9 +1,9 @@
 "use client";
 
+import { NameForm } from "@/components/name-form";
 import Particles from "@/components/Particles";
-import QuestionsForm from "@/components/question-form";
 
-export default function QuestionsPage() {
+export default function NamePage() {
   return (
     <main className="relative min-h-svh w-full overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0 z-0">
@@ -26,8 +26,8 @@ export default function QuestionsPage() {
         />
       </div>
 
-      <div className="relative z-10 w-full p-6 rounded-lg">
-        <QuestionsForm />
+      <div className="relative z-10 w-full max-w-sm p-6 backdrop-blur-2xl rounded-lg">
+        <NameForm />
       </div>
     </main>
   );

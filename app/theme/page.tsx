@@ -8,11 +8,17 @@ export default function ThemePage() {
     <main className="relative min-h-svh w-full overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0 z-0">
         <Particles
-          particleColors={["#ffffff"]}
+          particleColors={[
+            "#88E7FA ",
+            "#ac63ff ",
+            "#637cff ",
+            "#3B82F6 ",
+            "#EC4899 ",
+          ]}
           particleCount={400}
           particleSpread={10}
           speed={0.1}
-          particleBaseSize={100}
+          particleBaseSize={300}
           moveParticlesOnHover={false}
           alphaParticles={false}
           disableRotation={false}

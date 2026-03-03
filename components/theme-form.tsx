@@ -102,6 +102,7 @@ export function ThemeForm({
               name="theme"
               type="text"
               placeholder="Ex: Les dinosaures, l'espace..."
+              autoComplete="off"
             />
           </Field>
 

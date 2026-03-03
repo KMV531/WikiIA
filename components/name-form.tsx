@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { useStore } from "@/Context/useStore";
 import Image from "next/image";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export function NameForm({ className, ...props }: React.ComponentProps<"div">) {
   const router = useRouter();
@@ -71,8 +72,8 @@ export function NameForm({ className, ...props }: React.ComponentProps<"div">) {
       <form onSubmit={handleSubmit}>
         <FieldGroup>
           <div className="flex flex-col items-center gap-2 text-center">
-            <a
-              href="#"
+            <Link
+              href="/"
               className="flex flex-col items-center gap-2 font-medium"
             >
               <div className="flex size-48 items-center justify-center rounded-md">
@@ -83,7 +84,7 @@ export function NameForm({ className, ...props }: React.ComponentProps<"div">) {
                   height={500}
                 />
               </div>
-            </a>
+            </Link>
             <h1 className="text-xl font-bold">
               Commençons par faire connaissance
             </h1>
@@ -95,7 +96,13 @@ export function NameForm({ className, ...props }: React.ComponentProps<"div">) {
             <FieldLabel htmlFor="name">
               Comment veux-tu qu&apos;on t&apos;appelle ?
             </FieldLabel>
-            <Input id="name" type="text" placeholder="Ton prénom" name="name" />
+            <Input
+              id="name"
+              type="text"
+              placeholder="Ton prénom"
+              name="name"
+              autoComplete="off"
+            />
           </Field>
           <Field>
             <Button type="submit" className="cursor-pointer">
