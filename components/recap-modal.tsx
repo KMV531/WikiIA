@@ -8,7 +8,7 @@ import confetti from "canvas-confetti";
 import { Trophy, RefreshCw, Home } from "lucide-react";
 
 export default function RecapModal() {
-  const { name, score, questionNumber, resetGame } = useStore();
+  const { name, score, questionNumber, restartQuiz, resetGame } = useStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -39,8 +39,13 @@ export default function RecapModal() {
   }, []);
 
   const handleReplay = () => {
-    resetGame();
+    restartQuiz();
     router.push("/theme");
+  };
+
+  const handleGoHome = () => {
+    resetGame();
+    router.push("/");
   };
 
   return (
@@ -99,10 +104,7 @@ export default function RecapModal() {
             <RefreshCw className="w-5 h-5" /> Rejouer
           </Button>
           <Button
-            onClick={() => {
-              resetGame();
-              router.push("/");
-            }}
+            onClick={handleGoHome}
             variant="outline"
             className="cursor-pointer h-14 px-8 border-white/20 text-white hover:bg-white/10 text-lg font-bold rounded-xl flex items-center gap-2"
           >

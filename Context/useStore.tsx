@@ -14,6 +14,7 @@ interface GameState {
   setTimeLeft: (time: number) => void;
   decrementTime: () => void;
   addTime: (seconds: number) => void;
+  restartQuiz: () => void;
   resetGame: () => void;
 }
 
@@ -44,6 +45,12 @@ export const useStore = create<GameState>()(
         set((state) => ({
           timeLeft: state.timeLeft + seconds,
         })),
+      restartQuiz: () =>
+        set({
+          score: 0,
+          questionNumber: 1,
+          timeLeft: 120,
+        }),
 
       resetGame: () =>
         set({

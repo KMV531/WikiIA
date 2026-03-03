@@ -25,7 +25,7 @@ export function ThemeForm({
   const setTheme = useStore((state) => state.setTheme);
 
   const validateTheme = (theme: string) => {
-    const regex = /^[a-zA-ZÀ-ÿ\s-]+$/;
+    const regex = /^[a-zA-ZÀ-ÿ\s'-]+$/;
 
     const trimmedTheme = theme.trim();
 
