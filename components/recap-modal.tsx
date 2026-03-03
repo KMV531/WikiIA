@@ -8,7 +8,7 @@ import confetti from "canvas-confetti";
 import { Trophy, RefreshCw, Home } from "lucide-react";
 
 export default function RecapModal() {
-  const { name, score, resetGame } = useStore();
+  const { name, score, questionNumber, resetGame } = useStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -74,11 +74,21 @@ export default function RecapModal() {
           )}
         </div>
 
-        <div className="bg-white/5 rounded-2xl p-8 border border-white/5">
-          <p className="text-gray-400 uppercase text-xs tracking-[0.3em] mb-2">
-            Score Final
-          </p>
-          <p className="text-6xl font-black text-white font-mono">{score}</p>
+        <div className="bg-white/5 rounded-2xl p-8 border border-white/5 flex flex-col items-start justify-between">
+          <div className="flex items-center justify-between gap-8">
+            <p className="text-gray-400 uppercase text-xs tracking-[0.3em]">
+              Score Final :
+            </p>
+            <p className="text-xl font-black text-white font-mono">{score}</p>
+          </div>
+          <div className="flex items-center justify-between gap-8">
+            <p className="text-gray-400 uppercase text-xs tracking-[0.3em]">
+              No de Questions :
+            </p>
+            <p className="text-xl font-black text-white font-mono">
+              {questionNumber}
+            </p>
+          </div>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">

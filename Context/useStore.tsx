@@ -10,6 +10,10 @@ interface GameState {
   setTheme: (newTheme: string) => void;
   addScore: (points: number) => void;
   nextQuestion: () => void;
+  timeLeft: number;
+  setTimeLeft: (time: number) => void;
+  decrementTime: () => void;
+  addTime: (seconds: number) => void;
   resetGame: () => void;
 }
 
@@ -20,6 +24,10 @@ export const useStore = create<GameState>()(
       theme: "",
       score: 0,
       questionNumber: 1,
+      timeLeft: 120,
+      setTimeLeft: (time) => set({ timeLeft: time }),
+      decrementTime: () =>
+        set((state) => ({ timeLeft: Math.max(0, state.timeLeft - 1) })),
 
       setName: (newName) => set({ name: newName }),
 
@@ -32,8 +40,19 @@ export const useStore = create<GameState>()(
           questionNumber: state.questionNumber + 1,
         })),
 
+      addTime: (seconds) =>
+        set((state) => ({
+          timeLeft: state.timeLeft + seconds,
+        })),
+
       resetGame: () =>
-        set({ name: "", theme: "", score: 0, questionNumber: 1 }),
+        set({
+          name: "",
+          theme: "",
+          score: 0,
+          questionNumber: 1,
+          timeLeft: 120,
+        }),
     }),
     {
       name: "quiz-storage",

@@ -11,15 +11,22 @@ export async function POST(req: Request) {
       messages: [
         {
           role: "system",
-          content:
-            "Tu es un juge de jeu de quiz. Ton rôle est de dire si l'élève a identifié la bonne erreur. Sois indulgent : si l'idée est là, c'est bon. Réponds UNIQUEMENT par 'OUI' ou 'NON'.",
+          content: `Tu es l'arbitre bienveillant du jeu "Wikipia". 
+            Ton rôle est de valider la réponse d'un élève.
+            CONSIGNES :
+            1. ANALYSE L'INTENTION : Si l'élève mentionne l'erreur cachée, même avec des fautes d'orthographe ou une phrase mal construite, tu dis OUI.
+            2. INDULGENCE : Si l'élève a compris quel était le problème, il gagne les points.
+            3. STRICT : Si l'élève répond totalement à côté ou ne mentionne pas le sujet de l'erreur, tu dis NON.
+            RÉPONSE UNIQUE : OUI ou NON.`,
         },
         {
           role: "user",
-          content: `L'erreur à trouver était : "${aiError}".
-          L'explication correcte était : "${aiCorrection}".
-          L'élève a répondu : "${userChoice}".
-          L'élève a-t-il trouvé l'erreur ?`,
+          content: `CONTEXTE DU JEU :
+            L'IA a menti en disant : "${aiError}".
+            La vérité est : "${aiCorrection}".
+            L'élève a écrit : "${userChoice}".
+    
+            QUESTION : L'élève a-t-il compris où était l'erreur ?`,
         },
       ],
       model: "llama-3-8b-8192",

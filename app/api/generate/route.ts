@@ -15,21 +15,25 @@ export async function POST(req: Request) {
       messages: [
         {
           role: "system",
-          content: `Tu es un expert en pédagogie et en fact-checking. 
-          Ton but est de créer des textes éducatifs pour des collégiens (11-15 ans).
-          Tu dois TOUJOURS répondre sous forme d'un objet JSON pur.
-          Le texte doit être court (4-5 lignes), sérieux, et contenir EXACTEMENT UNE erreur factuelle subtile mais trouvable.
-          L'erreur ne doit pas être une faute d'orthographe, mais une erreur de fait (date, nom, concept, lieu).`,
+          content: `Tu es un concepteur de jeux de fact-checking. 
+            Tu génères des textes pour des collégiens. 
+            RÈGLES CRUCIALES :
+            1. ZERO CONFUSION : Tout le texte doit être 100% vrai, SAUF un seul fait précis (nom, date, lieu).
+            2. DIVERSITÉ : Ne reste pas sur le sujet le plus connu du thème (ex: si thème 'Dinosaures', évite le T-Rex si possible). Explore des sous-sujets originaux.
+            3. MOT-CLÉ DE SÉCURITÉ : Dans le champ "error", ne mets qu'un seul mot ou un groupe de mots très court qui représente l'erreur.
+            4. STRUCTURE : 3 phrases de contexte vrai, 1 phrase contenant l'erreur unique.`,
         },
         {
           role: "user",
-          content: `Génère un texte sur le thème suivant : "${theme}". 
-          Format JSON attendu :
-          {
-            "text": "Le texte complet avec l'erreur",
-            "error": "Le mot ou la phrase précise qui est faux",
-            "correction": "L'explication correcte"
-          }`,
+          content: `Génère un quiz sur : "${theme}".
+            Interdiction d'inventer plusieurs erreurs.
+            Réponds UNIQUEMENT en JSON :
+            {
+              "text": "Texte court et pédagogique",
+              "error": "Le mot-clé précis à trouver",
+              "correction": "La vérité en une phrase simple",
+              "category": "DATE ou LIEU ou NOM ou CHIFFRE" 
+            }`,
         },
       ],
       model: "llama-3.3-70b-versatile",
