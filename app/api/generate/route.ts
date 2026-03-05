@@ -12,6 +12,12 @@ export async function POST(req: Request) {
       contents: `Tu es un Agent Secret. Thème : ${theme}. 
         Génère un pack de 3 missions de fact-checking pour collégiens (11-13 ans).
 
+        RÈGLES STRICTES :
+          1. LONGUEUR : Maximum 200 caractères par texte. Sois percutant.
+          2. PAS DE GRAS : Le texte doit être uniforme. L'erreur doit être fondue dans la masse.
+          3. L'ERREUR : Elle doit être crédible. Pas de dates absurdes comme 1800 pour un iPhone.
+          4. VARIÉTÉ : Change de sujet à chaque mission (Tech, Records, Créateurs, Anecdotes).
+
         INTERDICTION FORMELLE de parler de :
         - L'exportation de poisson séché ou de nouilles (trop utilisé).
         - La ville de Tokyo ou du Japon pour le siège social (trop utilisé).
@@ -31,14 +37,13 @@ export async function POST(req: Request) {
               "text": "Texte avec une erreur",
               "error": "L'erreur",
               "correction": "La vérité",
-              "category": "DATE/NOM/LIEU"
+              "category": "DATE | NOM |LIEU"
             }
           ]
         }`,
       config: {
         temperature: 0.7,
       },
-      // La v3 supporte souvent mieux le formatage JSON direct
     });
 
     const data = JSON.parse(response.text!);

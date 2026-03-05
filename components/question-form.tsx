@@ -166,7 +166,7 @@ export default function QuestionsForm() {
         });
       }
     } catch (error) {
-      toast.error("Erreur d'analyse");
+      toast.error("Erreur d'analyse, AI a un souci, merci de verifier !");
     } finally {
       setLoading(false);
     }
@@ -217,9 +217,9 @@ export default function QuestionsForm() {
               <div className="space-y-8">
                 <div className="relative">
                   <span className="text-blue-500 font-bold uppercase text-[10px] tracking-[0.3em] mb-4 block opacity-70">
-                    Rapport de mission / {aiAnswer.category}
+                    Rapport de mission
                   </span>
-                  <p className="text-xl md:text-2xl text-gray-100 leading-relaxed font-serif italic">
+                  <p className="text-lg md:text-xl font-mono leading-relaxed tracking-tight italic text-gray-100">
                     &quot;{textIA}&quot;
                   </p>
                 </div>
