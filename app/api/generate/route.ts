@@ -3,9 +3,10 @@ import Groq from "groq-sdk";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
-export async function POST(req: Request) {
+export async function POST(req: Request) {    
   try {
-    const { theme } = await req.json();
+    const body = await req.json();
+    const theme = body.theme;
 
     if (!theme) {
       return NextResponse.json({ error: "Thème manquant" }, { status: 400 });
